@@ -15,13 +15,15 @@ public class GhostBlock extends Tetrimino {
 	int shortestDistance = 40;
 	int lowestBlockYVal = 23;
 	for (Location loc : returnLocation) {
-	    for (int y = 0; y < 23; y++) {
+	    if (lowestBlockYVal > loc.y) {
+		lowestBlockYVal = loc.y;
+	    }
+	}
+	for (Location loc : returnLocation) {
+	    for (int y = 0; y < lowestBlockYVal; y++) {
 		if (field[loc.x][y] != null && shortestDistance > loc.y - y) {
 		    shortestDistance = loc.y - y;
 		}
-	    }
-	    if (lowestBlockYVal > loc.y) {
-		lowestBlockYVal = loc.y;
 	    }
 	}
 	if (shortestDistance > lowestBlockYVal) {

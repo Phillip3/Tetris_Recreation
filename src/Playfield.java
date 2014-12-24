@@ -143,6 +143,7 @@ public class Playfield {
 		}
 		case DOWN: {
 		    this.timerFired();
+		    this.timer.restart();
 		    break;
 		}
 		case LEFT: {
@@ -186,10 +187,8 @@ public class Playfield {
 		case SHIFT: {
 		    if (canHoldBlock) {
 			if (holdBlock != null) {
-			    Tetrimino t = Tetrimino
-				    .newTetriminoWithSameClass(movingBlock);
-			    movingBlock = Tetrimino
-				    .newTetriminoWithSameClass(holdBlock);
+			    Tetrimino t = Tetrimino.newTetriminoWithSameClass(movingBlock);
+			    movingBlock = Tetrimino.newTetriminoWithSameClass(holdBlock);
 			    holdBlock = t;
 			    this.ghostBlock = new GhostBlock(movingBlock, field);
 			} else {

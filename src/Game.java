@@ -59,6 +59,9 @@ public class Game implements Runnable {
 			playfieldView.repaint();
 			if (playfield.status == Status.END) {
 			    status.setText("  GAME OVER");
+			    String name = JOptionPane.showInputDialog(frame,
+		                        "What is your name?", null);
+			    Levels.setNameAndScore(name, playfield.score, playfield.totalLinesCompleted, playfield.level);
 			}
 		    }
 		});
